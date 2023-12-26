@@ -83,6 +83,26 @@ jobs:
         mkdir build-noint8 && cd build-noint8
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
         cmake --build . -j 2
+    
+    - name: Zip directory
+      run: |
+        zip -r build.zip build
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build.zip
+        
+    - name: Zip directory noint8
+      run: |
+        zip -r build-noint8.zip build-noint8
+
+    - name: Upload Artifact noint8
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-noint8
+        path: build-noint8.zip
     - name: test-noint8
       run: |
         export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
@@ -141,6 +161,26 @@ jobs:
         mkdir build-noint8 && cd build-noint8
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
+    - name: Zip directory
+      run: |
+        zip -r build.zip build
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build.zip
+        
+    - name: Zip directory noint8
+      run: |
+        zip -r build-noint8.zip build-noint8
+
+    - name: Upload Artifact noint8
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-noint8
+        path: build-noint8.zip
+        
     - name: test-noint8
       run: |
         export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
@@ -199,6 +239,25 @@ jobs:
         mkdir build-noint8 && cd build-noint8
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
+    - name: Zip directory
+      run: |
+        zip -r build.zip build
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build.zip
+        
+    - name: Zip directory noint8
+      run: |
+        zip -r build-noint8.zip build-noint8
+
+    - name: Upload Artifact noint8
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-noint8
+        path: build-noint8.zip
     - name: test-noint8
       run: |
         export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
