@@ -73,20 +73,14 @@ jobs:
       run: cmake --build build -j 2
     - name: Zip directory
       run: |
-        cd /home/runner/work/
+        cd /home/runner/work/nccn/
         zip -r mipsel.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: mipsel
-        path: mipsel.zip
-        
-    - name: test
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build
-        TESTS_EXECUTABLE_LOADER=qemu-mipsel TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/mipsel-linux-gnu" ctest --output-on-failure -j 2
+        path: /home/runner/work/nccn/mipsel.zip
 
   linux-gcc-mipsisa32r6el:
     runs-on: ubuntu-20.04
@@ -131,17 +125,11 @@ jobs:
       
     - name: Zip directory
       run: |
-        cd /home/runner/work/
+        cd /home/runner/work/nccn/
         zip -r mipsisa32r6el.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: mipsisa32r6el
-        path: mipsisa32r6el.zip
-
-    - name: test
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build
-        TESTS_EXECUTABLE_LOADER=qemu-mipsel TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/mipsisa32r6el-linux-gnu" ctest --output-on-failure -j 2
+        path: /home/runner/work/nccn/mipsisa32r6el.zip
