@@ -68,12 +68,10 @@ jobs:
         sudo apt-get install g++-mipsel-linux-gnu
 
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsel-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsel-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -NCNN_SHARED_LIB=ON -NCNN_PYTHON=ON ..
     - name: build
       run: cmake --build build -j 2
-    - name: make1
-      run: cd ./build/src && make -j2 && make install
-    - name: make2
+    - name: make
       run: cd build && make -j2 && make install
     - name: Zip directory
       run: |
@@ -123,12 +121,10 @@ jobs:
         sudo apt-get install g++-mipsisa32r6el-linux-gnu
 
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsisa32r6el-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsisa32r6el-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -NCNN_SHARED_LIB=ON -NCNN_PYTHON=ON ..
     - name: build
       run: cmake --build build -j 2
-    - name: make1
-      run: cd ./build/src && make -j2 && make install
-    - name: make2
+    - name: make
       run: cd build && make -j2 && make install
       
     - name: Zip directory
