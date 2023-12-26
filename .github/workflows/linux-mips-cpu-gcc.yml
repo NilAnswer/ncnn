@@ -71,6 +71,8 @@ jobs:
       run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsel-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
     - name: build
       run: cmake --build build -j 2
+    - name: make
+      run: cd build && make -j2 && make install
     - name: Zip directory
       run: |
         cd /home/runner/work/ncnn/
@@ -122,6 +124,8 @@ jobs:
       run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsisa32r6el-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
     - name: build
       run: cmake --build build -j 2
+    - name: make
+      run: cd build && make -j2 && make install
       
     - name: Zip directory
       run: |
