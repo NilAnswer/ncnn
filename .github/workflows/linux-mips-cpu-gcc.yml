@@ -73,13 +73,14 @@ jobs:
       run: cmake --build build -j 2
     - name: Zip directory
       run: |
-        zip -r build.zip build
+        cd /home/runner/work/
+        zip -r mipsel.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build
-        path: build.zip
+        name: mipsel
+        path: mipsel.zip
         
     - name: test
       run: |
@@ -130,13 +131,14 @@ jobs:
       
     - name: Zip directory
       run: |
-        zip -r build.zip build
+        cd /home/runner/work/
+        zip -r mipsisa32r6el.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build
-        path: build.zip
+        name: mipsisa32r6el
+        path: mipsisa32r6el.zip
 
     - name: test
       run: |
