@@ -71,14 +71,14 @@ jobs:
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
     - name: make-noint8
       run: cd build-noint8 && make -j2 && make install
@@ -134,14 +134,14 @@ jobs:
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
     - name: make-noint8
       run: cd build-noint8 && make -j2 && make install
@@ -198,14 +198,14 @@ jobs:
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install 
