@@ -73,14 +73,14 @@ jobs:
       run: cmake --build build -j 2
     - name: Zip directory
       run: |
-        cd /home/runner/work/nccn/
+        cd /home/runner/work/ncnn/
         zip -r mipsel.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: mipsel
-        path: /home/runner/work/nccn/mipsel.zip
+        path: /home/runner/work/ncnn/mipsel.zip
 
   linux-gcc-mipsisa32r6el:
     runs-on: ubuntu-20.04
@@ -125,11 +125,11 @@ jobs:
       
     - name: Zip directory
       run: |
-        cd /home/runner/work/nccn/
+        cd /home/runner/work/ncnn/
         zip -r mipsisa32r6el.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: mipsisa32r6el
-        path: /home/runner/work/nccn/mipsisa32r6el.zip
+        path: /home/runner/work/ncnn/mipsisa32r6el.zip
