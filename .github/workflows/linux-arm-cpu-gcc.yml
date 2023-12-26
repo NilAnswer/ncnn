@@ -81,14 +81,14 @@ jobs:
     
     - name: Zip directory
       run: |
-        cd /home/runner/work/nccn/
+        cd /home/runner/work/ncnn/
         zip -r arm.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: arm
-        path: /home/runner/work/nccn/arm.zip
+        path: /home/runner/work/ncnn/arm.zip
         
 
   linux-gcc-armhf:
@@ -141,7 +141,7 @@ jobs:
         
     - name: Zip directory
       run: |
-        cd /home/runner/work/nccn/
+        cd /home/runner/work/ncnn/
         zip -r armhf.zip ncnn
 
 
@@ -149,7 +149,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: armhf
-        path: /home/runner/work/nccn/armhf.zip
+        path: /home/runner/work/ncnn/armhf.zip
         
 
   linux-gcc-armhf-vfpv3-d16:
@@ -202,13 +202,13 @@ jobs:
     
     - name: Zip directory
       run: |
-        cd /home/runner/work/nccn/
+        cd /home/runner/work/ncnn/
         zip -r vfpv3.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: vfpv3
-        path: /home/runner/work/nccn/vfpv3.zip
+        path: /home/runner/work/ncnn/vfpv3.zip
         
 
