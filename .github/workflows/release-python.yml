@@ -2,8 +2,9 @@ name: release-python
 # on: [push, pull_request]
 on:
   push:
-    tags:
-      - '*'
+    branches: [master]
+    paths:
+    - '.github/workflows/release-python.yml'
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_13.4.1.app/Contents/Developer
