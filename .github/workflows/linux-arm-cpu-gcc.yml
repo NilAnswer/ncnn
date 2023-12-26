@@ -67,7 +67,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabi
     - name: initpy
-      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+      run: |
+        sudo apt-get update
+        cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+        cd /home/runner/work/ncnn/ncnn/python
+        CMAKE_TOOLCHAIN_FILE="/home/runner/work/ncnn/ncnn/toolchains/arm-linux-gnueabi.toolchain.cmake" python setup.py install
     - name: build
       run: |
         mkdir build && cd build
@@ -130,7 +134,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabihf
     - name: initpy
-      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+      run: |
+        sudo apt-get update
+        cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+        cd /home/runner/work/ncnn/ncnn/python
+        CMAKE_TOOLCHAIN_FILE="/home/runner/work/ncnn/ncnn/toolchains/arm-linux-gnueabi.toolchain.cmake" python setup.py install
     - name: build
       run: |
         mkdir build && cd build
@@ -194,7 +202,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabihf
     - name: initpy
-      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+      run: |
+        sudo apt-get update
+        cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
+        cd /home/runner/work/ncnn/ncnn/python
+        CMAKE_TOOLCHAIN_FILE="/home/runner/work/ncnn/ncnn/toolchains/arm-linux-gnueabi.toolchain.cmake" python setup.py install
     - name: build
       run: |
         mkdir build && cd build
