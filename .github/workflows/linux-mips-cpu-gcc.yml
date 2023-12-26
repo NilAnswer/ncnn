@@ -66,10 +66,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-mipsel-linux-gnu
-    - name: initpy
-      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsel-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
+      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsel-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
     - name: build
       run: cmake --build build -j 2
     - name: make
@@ -120,10 +118,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-mipsisa32r6el-linux-gnu
-    - name: initpy
-      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsisa32r6el-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
+      run: mkdir build && cd build && cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/mipsisa32r6el-linux-gnu.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
     - name: build
       run: cmake --build build -j 2
     - name: make
