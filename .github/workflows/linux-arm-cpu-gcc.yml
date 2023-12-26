@@ -66,20 +66,19 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabi
-
+    - name: initpy
+      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
         cmake --build . -j 2
-    - name: make1
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
-    - name: make2
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+    - name: make
+      run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
     - name: make-noint8
       run: cd build-noint8 && make -j2 && make install
@@ -130,20 +129,19 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabihf
-
+    - name: initpy
+      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
         cmake --build . -j 2
-    - name: make1
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
-    - name: make2
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+    - name: make
+      run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
     - name: make-noint8
       run: cd build-noint8 && make -j2 && make install
@@ -195,23 +193,22 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabihf
-
+    - name: initpy
+      run: cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
-    - name: make1
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
-    - name: make2
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+    - name: make
+      run: cd build && make -j2 && make install 
     - name: Zip directory
       run: |
         cd /home/runner/work/ncnn/
