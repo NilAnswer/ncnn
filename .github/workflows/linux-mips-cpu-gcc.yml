@@ -72,9 +72,9 @@ jobs:
     - name: build
       run: cmake --build build -j 2
     - name: make1
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+      run: cd ./build/src && make -j2 && make install
     - name: make2
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+      run: cd build && make -j2 && make install
     - name: Zip directory
       run: |
         cd /home/runner/work/ncnn/
@@ -127,9 +127,9 @@ jobs:
     - name: build
       run: cmake --build build -j 2
     - name: make1
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+      run: cd ./build/src && make -j2 && make install
     - name: make2
-      run: cd build && make -j2 && make install && cd src && make -j2 && make install
+      run: cd build && make -j2 && make install
       
     - name: Zip directory
       run: |
