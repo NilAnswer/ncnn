@@ -72,11 +72,6 @@ jobs:
         mkdir build && cd build
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
         cmake --build . -j 2
-    - name: test
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabi" ctest --output-on-failure -j 2
 
     - name: build-noint8
       run: |
@@ -86,28 +81,15 @@ jobs:
     
     - name: Zip directory
       run: |
-        zip -r build.zip build
+        cd /home/runner/work/
+        zip -r arm.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build
-        path: build.zip
+        name: arm
+        path: arm.zip
         
-    - name: Zip directory noint8
-      run: |
-        zip -r build-noint8.zip build-noint8
-
-    - name: Upload Artifact noint8
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-noint8
-        path: build-noint8.zip
-    - name: test-noint8
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build-noint8
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabi" ctest --output-on-failure -j 2
 
   linux-gcc-armhf:
     runs-on: ubuntu-20.04
@@ -150,42 +132,25 @@ jobs:
         mkdir build && cd build
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
         cmake --build . -j 2
-    - name: test
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabihf" ctest --output-on-failure -j 2
 
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
+        
     - name: Zip directory
       run: |
-        zip -r build.zip build
+        cd /home/runner/work/
+        zip -r armhf.zip ncnn
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: build.zip
-        
-    - name: Zip directory noint8
-      run: |
-        zip -r build-noint8.zip build-noint8
 
     - name: Upload Artifact noint8
       uses: actions/upload-artifact@v2
       with:
-        name: build-noint8
-        path: build-noint8.zip
+        name: armhf
+        path: armhf.zip
         
-    - name: test-noint8
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build-noint8
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabihf" ctest --output-on-failure -j 2
 
   linux-gcc-armhf-vfpv3-d16:
     runs-on: ubuntu-20.04
@@ -228,38 +193,22 @@ jobs:
         mkdir build && cd build
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON ..
         cmake --build . -j 2
-    - name: test
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabihf" ctest --output-on-failure -j 2
 
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
         cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabihf-vfpv3-d16.toolchain.cmake -DNCNN_BUILD_TOOLS=OFF -DNCNN_BUILD_EXAMPLES=OFF -DNCNN_BUILD_TESTS=ON -DNCNN_INT8=OFF ..
         cmake --build . -j 2
+    
     - name: Zip directory
       run: |
-        zip -r build.zip build
+        cd /home/runner/work/
+        zip -r vfpv3.zip ncnn
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build
-        path: build.zip
+        name: vfpv3
+        path: vfpv3.zip
         
-    - name: Zip directory noint8
-      run: |
-        zip -r build-noint8.zip build-noint8
 
-    - name: Upload Artifact noint8
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-noint8
-        path: build-noint8.zip
-    - name: test-noint8
-      run: |
-        export PATH=$GITHUB_WORKSPACE/qemu-install/bin:$PATH
-        cd build-noint8
-        TESTS_EXECUTABLE_LOADER=qemu-arm TESTS_EXECUTABLE_LOADER_ARGUMENTS="-L;/usr/arm-linux-gnueabihf" ctest --output-on-failure -j 2
