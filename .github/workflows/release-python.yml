@@ -49,6 +49,9 @@ jobs:
           - { os: ubuntu-20.04, arch: x86_64,     build: 'cp*-manylinux*' }
           - { os: ubuntu-20.04, arch: x86_64,     build: 'cp*-musllinux*' }
           - { os: ubuntu-20.04, arch: x86_64,     build: 'pp*'            }
+          - { os: ubuntu-20.04, arch: arm,     build: 'cp*-manylinux*' }
+          - { os: ubuntu-20.04, arch: arm,     build: 'cp*-musllinux*' }
+          - { os: ubuntu-20.04, arch: arm,     build: 'pp*'            }
           - { os: ubuntu-20.04, arch: i686,       build: 'cp*-manylinux*' }
           - { os: ubuntu-20.04, arch: i686,       build: 'cp*-musllinux*' }
           - { os: ubuntu-20.04, arch: i686,       build: 'pp*'            }
