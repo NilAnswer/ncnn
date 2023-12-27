@@ -66,23 +66,22 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install g++-arm-linux-gnueabi
+        sudo apt-get install python3
     - name: initpy
       run: |
         sudo apt-get update
         cd /home/runner/work/ncnn/ncnn && git submodule init && git submodule update
-        cd /home/runner/work/ncnn/ncnn/python
-        CMAKE_TOOLCHAIN_FILE="/home/runner/work/ncnn/ncnn/toolchains/arm-linux-gnueabi.toolchain.cmake" python setup.py.i install
     - name: build
       run: |
         mkdir build && cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_PYTHON=ON ..
         cmake --build . -j 2
     - name: make
       run: cd build && make -j2 && make install
     - name: build-noint8
       run: |
         mkdir build-noint8 && cd build-noint8
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_INT8=OFF ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/arm-linux-gnueabi.toolchain.cmake -DNCNN_BUILD_TOOLS=ON -DNCNN_BUILD_EXAMPLES=ON -DNCNN_SHARED_LIB=ON -DNCNN_INT8=OFF -DNCNN_PYTHON=ON ..
         cmake --build . -j 2
     - name: make-noint8
       run: cd build-noint8 && make -j2 && make install
