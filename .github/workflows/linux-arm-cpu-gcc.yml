@@ -12,7 +12,7 @@ on:
     - 'src/layer/*'
     - 'src/layer/arm/**'
     - 'tests/**'
-  pull_request:
+  pull_request: 
     branches: [master]
     paths:
     - '.github/workflows/linux-arm-cpu-gcc.yml'
