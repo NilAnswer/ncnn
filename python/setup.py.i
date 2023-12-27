@@ -20,7 +20,7 @@ requirements = ["numpy", "tqdm", "requests", "portalocker", "opencv-python"]
 
 setup(
     name="ncnn",
-    version="${PACKAGE_VERSION}",
+    version="1.0",
     author="nihui",
     author_email="nihuini@tencent.com",
     maintainer="caishanli",
